@@ -52,6 +52,32 @@
             </button>
           </div>
         </div>
+
+        <div class="flex flex-col p-2 rounded-xl bg-white"> 
+          <div class="flex justify-between w-full">
+            <h3>Spécialités</h3>
+            <div class="flex flex-inline space-x-2 items-center">
+              <p>à compléter</p>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/120/120890.png"
+                class="h-[12px] w-[12px] transition-transform duration-300"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col p-2 rounded-xl bg-white"> 
+          <div class="flex justify-between w-full">
+            <h3>Notes</h3>
+            <div class="flex flex-inline space-x-2 items-center">
+              <p>à compléter</p>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/120/120890.png"
+                class="h-[12px] w-[12px] transition-transform duration-300"
+              />
+            </div>
+          </div>
+        </div>
         
 
         <!-- Bouton de soumission -->
@@ -60,7 +86,7 @@
             type="submit"
             class="bg-gray-900 hover:bg-gray-700 text-white font-medium px-8 py-3 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
           >
-            Confirmer et continuer
+            Confirmer
           </button>
         </div>
       </form>
