@@ -1,12 +1,8 @@
-@tailwind base;/* Styles personnalisés pour Career Compass */
-
+@tailwind base;
 @tailwind components;
+@tailwind utilities;
 
-@tailwind utilities;body {
-
-  background-color: #F7F3F0;
-
-/* Styles personnalisés */}
+/* Styles personnalisés pour Career Compass */
 body {
   @apply bg-background font-sans;
 }
