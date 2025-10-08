@@ -104,6 +104,8 @@ const onLyceeSelected = (lycee: Lycee) => {
   if (classeData.value.bacType && !lycee.sections.includes(classeData.value.bacType)) {
     classeData.value.bacType = null
     formData.value.bacType = null
+    classeData.value.classe = null
+    formData.value.classe = null
   }
   
   console.log('Lycée sélectionné:', lycee)
