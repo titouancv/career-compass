@@ -18,6 +18,7 @@
         >
           <ClasseSelector 
             v-model="classeData"
+            :available-sections="formData.lycee?.sections"
             @confirm="onClasseConfirm"
           />
         </FormSection>
@@ -96,7 +97,16 @@ const onClasseConfirm = () => {
 
 const onLyceeSelected = (lycee: Lycee) => {
   formData.value.lycee = lycee
+  
+  // Réinitialiser classeData quand un nouveau lycée est sélectionné
+  // si le bacType actuel n'est pas disponible dans les sections du nouveau lycée
+  if (classeData.value.bacType && !lycee.sections.includes(classeData.value.bacType)) {
+    classeData.value.bacType = null
+    formData.value.bacType = null
+  }
+  
   console.log('Lycée sélectionné:', lycee)
+  console.log('Sections disponibles:', lycee.sections)
 }
 
 const handleSubmit = () => {

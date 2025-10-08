@@ -1,5 +1,5 @@
 export type ClasseLevel = 'Seconde' | 'Premiere' | 'Terminal'
-export type BacType = 'Générale' | 'Technologique' | 'Professionnel'
+export type BacType = 'Générale' | 'Technologique' | 'Professionnelle'
 
 export interface ClasseData {
   classe: ClasseLevel | null
@@ -18,7 +18,7 @@ export interface Lycee {
   email: string
   site_web: string
   specialites: string[]
-  sections: ('Générale' | 'Technologique' | 'Professionnelle')[]
+  sections: BacType[]
   effectifs: number
   taux_reussite_bac: number
   description?: string

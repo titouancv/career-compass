@@ -15,7 +15,7 @@
     <div 
       v-for="type in bacTypeOptions" 
       :key="type"
-      @click="selectType(type)"
+      @click="selectType(type as BacType)"
       class="rounded-full p-2 cursor-pointer transition-colors"
       :class="tempData.bacType === type ? 'bg-gray-900 text-white' : 'bg-gray-300 hover:bg-gray-400'"
     >
@@ -31,12 +31,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, watch } from 'vue'
 import type { ClasseLevel, BacType, ClasseData } from '../composables/useTypes'
 import AppButton from './AppButton.vue'
 
 interface Props {
   modelValue: ClasseData
+  availableSections?: BacType[]
 }
 
 const props = defineProps<Props>()
@@ -47,12 +48,25 @@ const emit = defineEmits<{
 }>()
 
 const classeOptions: ClasseLevel[] = ['Seconde', 'Premiere', 'Terminal']
-const bacTypeOptions: BacType[] = ['Générale', 'Technologique', 'Professionnel']
+const bacTypeOptions = computed(() => {
+  return props.availableSections || ['Générale', 'Technologique', 'Professionnelle']
+})
 
 const tempData = ref<ClasseData>({
   classe: null,
   bacType: null
 })
+
+// Réinitialiser les données temporaires si les sections disponibles changent
+watch(
+  () => props.availableSections,
+  (newSections) => {
+    if (newSections && tempData.value.bacType && !newSections.includes(tempData.value.bacType)) {
+      tempData.value.bacType = null
+      emit('update:modelValue', { ...tempData.value })
+    }
+  }
+)
 
 const selectClasse = (level: ClasseLevel) => {
   if (tempData.value.classe === level) {
