@@ -7,8 +7,9 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss'
   ],
   nitro: {
-    preset: 'netlify'
+    preset: 'netlify-edge'
   },
+  ssr: true,
   app: {
     head: {
       title: 'Career Compass',
