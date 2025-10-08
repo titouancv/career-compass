@@ -42,6 +42,7 @@
         <!-- Submit Button -->
         <div class="flex justify-center pt-6">
           <AppButton
+          :disabled="!formData.classe || !formData.bacType || !formData.lycee"
             type="submit"
           >
             Confirmer

@@ -2,7 +2,7 @@
   <button
     :type="type"
     :disabled="disabled"
-    class="font-medium px-8 py-3 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+    class="font-medium px-[24px] py-[16px] rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
     :class="computedClasses"
     @click="$emit('click')"
   >
@@ -31,7 +31,7 @@ defineEmits<{
 
 const computedClasses = computed(() => {
   if (props.disabled) {
-    return 'bg-gray-300 text-gray-500 cursor-not-allowed'
+    return 'bg-white border border-[#E0E0E0] text-gray-500 cursor-not-allowed'
   }
   
   if (props.variant === 'primary') {

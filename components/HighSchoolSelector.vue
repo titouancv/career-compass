@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-4">
     <!-- Lycée sélectionné - Style comme l'image -->
-    <div v-if="selectedLycee && !isSelecting" class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-400 via-pink-400 to-purple-500 p-6 text-white shadow-lg">
+    <div v-if="selectedLycee && !isSelecting" class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-400 via-pink-400 to-purple-500 p-6 text-white">
       <!-- Contenu principal -->
       <div class="relative z-10">
         <h3 class="text-2xl font-bold mb-2">{{ selectedLycee.nom }}</h3>
@@ -15,9 +15,9 @@
           </div>
           
           <div class="flex items-center space-x-1">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+            <div class="h-[12px] w-[12px]">
+              <img src="https://www.nicepng.com/png/full/290-2904134_school-white-icon.png"/>
+            </div>
             <span class="text-white/90">{{ selectedLycee.type }}</span>
           </div>
         </div>
@@ -25,15 +25,11 @@
         <!-- Bouton Modifier -->
         <button
           @click="openLyceeSelection"
-          class="bg-white/20 backdrop-blur-sm border border-white/30 text-white px-6 py-3 rounded-full font-medium hover:bg-white/30 transition-all duration-200"
+          class="bg-white text-black px-[16px] py-[8px] rounded-full"
         >
           Modifier
         </button>
       </div>
-      
-      <!-- Élément décoratif -->
-      <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
-      <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full -ml-12 -mb-12"></div>
     </div>
 
     <!-- Placeholder quand aucun lycée n'est sélectionné -->
@@ -59,7 +55,7 @@
         </div>
         
         <!-- Bouton -->
-        <button class="bg-white/20 backdrop-blur-sm border border-white/30 text-white px-6 py-3 rounded-full font-medium hover:bg-white/30 transition-all duration-200">
+        <button class="bg-white/20 backdrop-blur-sm border border-white/30 text-white px-[16px] py-[8px] rounded-full font-medium hover:bg-white/30 transition-all duration-200">
           Choisir
         </button>
       </div>
@@ -75,14 +71,15 @@
           <h3 class="text-lg font-semibold text-gray-900">
             {{ selectedLycee ? 'Changer de lycée' : 'Choisir votre lycée' }}
           </h3>
-          <AppButton
+          <button
             v-if="selectedLycee"
             variant="secondary"
             @click="cancelSelection"
             size="sm"
+            class="bg-gray-900 text-white px-[16px] py-[8px] rounded-full"
           >
             Annuler
-          </AppButton>
+          </button>
         </div>
         
         <!-- Barre de recherche -->
@@ -91,7 +88,7 @@
             v-model="searchQuery"
             type="text"
             placeholder="Rechercher un lycée par nom, arrondissement..."
-            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400"
           />
           <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -110,8 +107,9 @@
               @click="setTypeFilter(type)"
               class="px-3 py-1 rounded-full text-sm transition-colors"
               :class="activeTypeFilter === type 
-                ? 'bg-blue-500 text-white' 
+                ? 'bg-orange-400 text-white' 
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+              :type="'button'"
             >
               {{ type }}
             </button>

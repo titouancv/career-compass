@@ -1,4 +1,4 @@
-export type ClasseLevel = 'Seconde' | 'Premiere' | 'Terminal'
+export type ClasseLevel = 'Seconde' | 'Première' | 'Terminal'
 export type BacType = 'Générale' | 'Technologique' | 'Professionnelle'
 
 export interface ClasseData {

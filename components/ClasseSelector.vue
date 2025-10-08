@@ -1,25 +1,28 @@
 <template>
-  <div class="flex flex-col gap-2">
-    <div class="flex gap-2">
+  <div class="flex flex-col gap-[24px]">
+    <div class="flex gap-[24px]">
       <div 
         v-for="level in classeOptions" 
         :key="level"
         @click="selectClasse(level)"
-        class="rounded-full p-2 cursor-pointer transition-colors"
-        :class="tempData.classe === level ? 'bg-gray-900 text-white' : 'bg-gray-300 hover:bg-gray-400'"
+        class="rounded-full px-[16px] py-[8px] cursor-pointer transition-colors"
+        :class="tempData.classe === level ? 'bg-transparent border border-black text-black' : 'bg-[#F5F5F5] hover:bg-gray-400'"
       >
         {{ level }}
       </div>
     </div>
-    <div class="h-px bg-black my-4"></div>
+    <div class="h-px bg-[#E0E0E0] my-4"></div>
+    <p>Type de bac</p>
+    <div class="flex gap-2">
     <div 
       v-for="type in bacTypeOptions" 
       :key="type"
       @click="selectType(type as BacType)"
-      class="rounded-full p-2 cursor-pointer transition-colors"
-      :class="tempData.bacType === type ? 'bg-gray-900 text-white' : 'bg-gray-300 hover:bg-gray-400'"
+      class="rounded-full px-[16px] py-[8px] cursor-pointer transition-colors"
+      :class="tempData.bacType === type ? 'bg-transparent  border border-black text-black' : 'bg-[#F5F5F5] hover:bg-gray-400'"
     >
       {{ type }}
+    </div>
     </div>
     <AppButton
       :disabled="!tempData.classe || !tempData.bacType"
@@ -47,7 +50,7 @@ const emit = defineEmits<{
   'confirm': []
 }>()
 
-const classeOptions: ClasseLevel[] = ['Seconde', 'Premiere', 'Terminal']
+const classeOptions: ClasseLevel[] = ['Seconde', 'Première', 'Terminal']
 const bacTypeOptions = computed(() => {
   return props.availableSections || ['Générale', 'Technologique', 'Professionnelle']
 })
